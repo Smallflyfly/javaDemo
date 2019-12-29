@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<h1 th:inline="text">Hello</h1>
+<p th:text="${hello}"></p>
+<p th:text="${version}"></p>
+<label for="gender">性别：</label>
+<select id="gender">
+    <option th:each="list:${genderList}" th:value="${list.getGender()}" th:text="${list.getGenderDesc()}"></option>
+</select>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wochanye.demo.mapper.WocyEmpExtMapper">
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*)
+        from wocy_emp
+        <where>
+            <if test="deptNo != null">
+                dept_no = #{deptNo}
+            </if>
+            <if test="gender != null">
+                gender = #{gender}
+            </if>
+            <if test="empName != null">
+                emp_name = #{empName}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectEmpList" resultMap="com.wochanye.demo.mapper.WocyEmpMapper.BaseResultMap">
+        select *
+        from wocy_emp
+        <where>
+            <if test="deptNo != null">
+                dept_no = #{deptNo}
+            </if>
+            <if test="gender != null">
+                gender = #{gender}
+            </if>
+            <if test="empName != null">
+                emp_name = #{empName}
+            </if>
+        </where>
+    </select>
+</mapper>

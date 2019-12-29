@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TalkingData iView组件使用示例</title>
+    <link rel="stylesheet" type="text/css" th:href="${contextPath}+'/css/iview.css'">
+    <link rel="stylesheet" type="text/css" th:href="${contextPath}+${urls.getForLookupPath('/css/common/common.css')}">
+</head>
+<body>
+<h1 th:inline="text">iView，你好</h1>
+<div id="app" style="padding: 6px;">
+    <i-button @click="show">Click me!</i-button>
+    <Modal v-model="visible" title="Welcome">Welcome to iView</Modal>
+</div>
+<br/>
+<div id="table" style="padding: 6px;">
+    <!--<Table border :columns="columns1" :data="data1"></Table>-->
+    <i-table border :columns="columns1" :data="data1"></i-table>
+</div>
+<br/>
+<div id="table6" style="padding: 6px;">
+    <i-table border :columns="columns6" :data="data6"></i-table>
+</div>
+<br/>
+<div id="wholeApp" style="margin: 16px 0;padding: 6px;">
+    <div id="wholeAppForm">
+        <Alert show-icon>
+            下面是简单的增删改查：
+            <Icon type="ios-lightbulb-outline" slot="icon"></Icon>
+            <template slot="desc">表格组件和翻页组件合并使用</template>
+        </Alert>
+        <i-form :model="queryItem" inline>
+            <form-item label="部门编号">
+                <i-input type="text" v-model="queryItem.deptNo" disabled placeholder="部门编号"></i-input>
+            </form-item>
+            <form-item label="部门名称">
+                <i-input type="text" v-model="queryItem.deptName" placeholder="部门名称"></i-input>
+            </form-item>
+            <form-item>
+                <i-button type="primary" @click="query()">查询</i-button>
+            </form-item>
+        </i-form>
+    </div>
+    <div id="wholeAppShow">
+        <div style="margin:3px 0 3px;text-align: right;">
+            <i-button type="ghost" size="small" @click="add()">新增</i-button>
+        </div>
+        <i-table border :loading="loading" :columns="userTableColumns" :data="userInfoList"></i-table>
+        <Page :total="totalCount" :current="pageIndex" :page-size="pageSize" :styles="styleList" @on-change="handlePage"
+              @on-page-size-change="handlePageSize" show-total show-sizer></Page>
+
+        <Modal v-model="modalAddEdit"
+               title="新增、修改部门信息"
+               @on-ok="modalOk"
+               @on-cancel="modalCancel">
+            <i-form :model="formAddEdit" label-position="left" :label-width="100">
+                <input type="hidden" v-model="formAddEdit.deptNo"/>
+                <form-item label="部门名称">
+                    <i-input v-model="formAddEdit.deptName"></i-input>
+                </form-item>
+                <form-item label="部门级别">
+                    <i-input v-model="formAddEdit.deptLevel" disabled></i-input>
+                </form-item>
+                <form-item label="部门地址">
+                    <i-input v-model="formAddEdit.deptLoc"></i-input>
+                </form-item>
+                <form-item label="上级部门">
+                    <i-input v-model="formAddEdit.deptPNo" disabled></i-input>
+                </form-item>
+            </i-form>
+        </Modal>
+    </div>
+</div>
+<script type="text/javascript" th:src="${contextPath}+'/js/vue/vue.min.js'"></script>
+<script type="text/javascript" th:src="${contextPath}+'/js/vue/iview.min.js'"></script>
+<script type="text/javascript" th:src="${contextPath}+'/js/axios/axios.min.js'"></script>
+<script th:inline="javascript">
+    axios.defaults.baseURL = [[${contextPath}]];
+</script>
+<script type="text/javascript" th:src="${contextPath}+${urls.getForLookupPath('/js/common/common.js')}"></script>
+<script type="text/javascript" th:src="${contextPath}+${urls.getForLookupPath('/js/demo/app.js')}"></script>
+<script type="text/javascript" th:src="${contextPath}+${urls.getForLookupPath('/js/demo/wholeApp.js')}"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false
+        },
+        methods: {
+            show: function () {
+                this.visible = true;
+            }
+        }
+    });
+
+    new Vue({
+        el: '#table',
+        data: {
+            columns1: [
+                {
+                    title: 'Name',
+                    key: 'name'
+                },
+                {
+                    title: 'Age',
+                    key: 'age'
+                },
+                {
+                    title: 'Address',
+                    key: 'address'
+                }
+            ],
+            data1: [
+                {
+                    name: 'John Brown',
+                    age: 18,
+                    address: 'New York No. 1 Lake Park',
+                    date: '2016-10-03'
+                },
+                {
+                    name: 'Jim Green',
+                    age: 24,
+                    address: 'London No. 1 Lake Park',
+                    date: '2016-10-01'
+                },
+                {
+                    name: 'Joe Black',
+                    age: 30,
+                    address: 'Sydney No. 1 Lake Park',
+                    date: '2016-10-02'
+                },
+                {
+                    name: 'Jon Snow',
+                    age: 26,
+                    address: 'Ottawa No. 2 Lake Park',
+                    date: '2016-10-04'
+                }
+            ]
+        }
+    });
+</script>
+</body>
+</html>
