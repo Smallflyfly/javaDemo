@@ -8,6 +8,7 @@ package com.wochanye.demo.exception.meta;
  */
 public enum DBExceptionEnum implements ExceptionEnum {
 
+    //数据库异常代码
     UNIQUE_KEY(20000, "主键不允许重复"),
     SQL_SYNTAX(20001, "数据库语法错误"),
     NOT_EXIST(20002, "数据不存在");

@@ -8,6 +8,7 @@ package com.wochanye.demo.exception.meta;
  */
 public enum SysExceptionEnum implements ExceptionEnum {
 
+    //系统异常代码
     UNKNOWN_ERROR(-1, "未知错误"),
     NEED_LOGIN(10000, "必须登陆"),
     LOGIN_TIMEOUT(10001, "登陆超时"),

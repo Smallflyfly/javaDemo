@@ -20,6 +20,4 @@ public interface DemoService {
 
     PageResult<List<WocyEmp>> getEmpInfoList(Integer deptNo, Integer empNo, String empName);
 
-    String getUrl(String key);
-
 }

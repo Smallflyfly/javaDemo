@@ -36,7 +36,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("Spring Boot 利用 Swagger 构建 Api 文档")
                 .description("简单优雅的 restful 风格")
-                .contact(new Contact("Jeff Cui", "http://140.143.233.60/", "cuij21@chinaunicom.cn"))
+//                .contact(new Contact("Jeff Cui", "http://140.143.233.60/", "cuij21@chinaunicom.cn"))
                 .version("1.0")
                 .build();
     }

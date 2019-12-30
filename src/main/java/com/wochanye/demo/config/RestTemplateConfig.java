@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -47,12 +48,13 @@ public class RestTemplateConfig {
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
-                .sslSocketFactory(getTrustedSSLSocketFactory(), x509TrustManager)
-                .hostnameVerifier(DO_NOT_VERIFY);
+                .sslSocketFactory(Objects.requireNonNull(getTrustedSslSocketFactory()), x509TrustManager)
+                .hostnameVerifier(hostnameVerifier);
         return builder.build();
     }
 
     private X509TrustManager x509TrustManager = new X509TrustManager() {
+        @Override
         public java.security.cert.X509Certificate[] getAcceptedIssuers() {
             return new X509Certificate[0];
         }
@@ -69,9 +71,9 @@ public class RestTemplateConfig {
     };
     private TrustManager[] trustAllCerts = new TrustManager[]{x509TrustManager};
 
-    private HostnameVerifier DO_NOT_VERIFY = (hostname, session) -> true;
+    private HostnameVerifier hostnameVerifier = (hostname, session) -> true;
 
-    private SSLSocketFactory getTrustedSSLSocketFactory() {
+    private SSLSocketFactory getTrustedSslSocketFactory() {
         try {
             SSLContext sc = SSLContext.getInstance("SSL");
             sc.init(null, trustAllCerts, new java.security.SecureRandom());

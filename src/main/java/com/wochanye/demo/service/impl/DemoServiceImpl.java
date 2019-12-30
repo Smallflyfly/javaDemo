@@ -37,8 +37,6 @@ public class DemoServiceImpl implements DemoService {
     @Resource
     private WocyEmpExtMapper wocyEmpExtMapper;
 
-//    @Resource
-//    private ConfigGroup configGroup;
 
     @Override
     public PageResult<List<WocyDept>> getDeptInfoList(int page, int pageSize, String deptName) {
@@ -70,12 +68,6 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public PageResult<List<WocyEmp>> getEmpInfoList(Integer deptNo, Integer empNo, String empName) {
-        return null;
-    }
-
-    @Override
-    public String getUrl(String key) {
-//        return configGroup.get(key);
         return null;
     }
 
