@@ -89,7 +89,6 @@ public class DemoController {
      *
      * @return
      */
-//    @RequestMapping("deptList")
     @RequestMapping(value = "deptList", method = RequestMethod.GET)
     @ResponseBody
     public PageResult<List<WocyDept>> getDeptList(int page, int pageSize, String deptName, HttpSession httpSession) {

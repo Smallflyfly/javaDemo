@@ -34,10 +34,6 @@ public class DemoServiceImpl implements DemoService {
     @Resource
     private WocyDeptExtMapper wocyDeptExtMapper;
 
-    @Resource
-    private WocyEmpExtMapper wocyEmpExtMapper;
-
-
     @Override
     public PageResult<List<WocyDept>> getDeptInfoList(int page, int pageSize, String deptName) {
         return null;

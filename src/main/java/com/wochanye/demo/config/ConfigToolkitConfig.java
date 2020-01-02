@@ -42,5 +42,4 @@ public class ConfigToolkitConfig {
         System.out.println(configProfile.getRootNode());
         return new ZookeeperConfigGroup(configProfile, "apiUrl");
     }
-
 }

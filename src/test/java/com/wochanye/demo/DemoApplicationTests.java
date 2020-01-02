@@ -3,6 +3,7 @@ package com.wochanye.demo;
 import com.dangdang.config.service.ConfigGroup;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
@@ -39,12 +40,21 @@ public class DemoApplicationTests {
 
     @Test
     public void testZK(){
-        String url = configGroup.get("baidu");
+        String url = configGroup.get("alibaba");
 //        Boolean flag = configGroup.containsKey("baidu");
 //        System.out.println(url);
 //        System.out.println(flag);
 //        String url = configGroup.get("baidu");
         System.out.println(url);
+    }
+
+    @Value("${MYSQL_DB_USERNAME}")
+    private String name;
+
+    @Test
+    public void testNacos(){
+        String mysqlName = name;
+        System.out.println(mysqlName);
     }
 
 }
