@@ -1,11 +1,6 @@
 package com.wochanye.demo.controller;
 
-import com.wochanye.demo.config.PageResult;
-import com.wochanye.demo.config.ResponseUtil;
-import com.wochanye.demo.config.Result;
 import com.wochanye.demo.constant.meta.GenderEnum;
-import com.wochanye.demo.model.WocyDept;
-import com.wochanye.demo.service.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,10 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,9 +24,6 @@ import java.util.Map;
 public class DemoController {
 
     private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
-
-    @Resource
-    private DemoService demoService;
 
     /**
      * 展示输出，但因为没有配置视图输出，会报500
@@ -89,13 +79,15 @@ public class DemoController {
      *
      * @return
      */
+    /**
     @RequestMapping(value = "deptList", method = RequestMethod.GET)
     @ResponseBody
-    public PageResult<List<WocyDept>> getDeptList(int page, int pageSize, String deptName, HttpSession httpSession) {
+    public PageResult<List<MyDeptPO>> getDeptList(int page, int pageSize, String deptName, HttpSession httpSession) {
         logger.info("Current Session：{}", httpSession.getAttribute("user"));
         logger.info("Current Page：{}, PageSize：{}", page, pageSize);
         return demoService.getDeptInfoList(page, pageSize, deptName);
     }
+    **/
 
     /**
      * 新增、编辑部门信息
@@ -106,12 +98,12 @@ public class DemoController {
      * @param httpSession
      * @return
      */
-    @RequestMapping(value = "addEditDept", method = RequestMethod.POST)
-    @ResponseBody
-    public Result addEditDept(int deptNo, String deptName, String deptLoc, HttpSession httpSession) {
-        logger.info("Current Session：{}", httpSession.getAttribute("user"));
-        demoService.addEditDept(deptNo, deptName, deptLoc);
-        return ResponseUtil.operateSuccess();
-    }
+//    @RequestMapping(value = "addEditDept", method = RequestMethod.POST)
+//    @ResponseBody
+//    public Result addEditDept(int deptNo, String deptName, String deptLoc, HttpSession httpSession) {
+//        logger.info("Current Session：{}", httpSession.getAttribute("user"));
+//        demoService.addEditDept(deptNo, deptName, deptLoc);
+//        return ResponseUtil.operateSuccess();
+//    }
 
 }

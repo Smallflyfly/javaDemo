@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wochanye.demo.mapper.DeptMapper">
+    <resultMap id="BaseDeptResultMapper" type="com.wochanye.demo.model.DeptPO">
+        <id column="dept_no" property="deptNo" jdbcType="INTEGER"/>
+        <result column="dept_name" property="deptName" jdbcType="VARCHAR"/>
+        <result column="dept_level" property="deptLevel" jdbcType="TINYINT"/>
+        <result column="dept_loc" property="deptLoc" jdbcType="VARCHAR"/>
+        <result column="operator" property="operator" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="DATETIME"/>
+        <result column="update_time" property="updateTime" jdbcType="DATETIME"/>
+    </resultMap>
+
+    <delete id="deleteByPrimaryKey" parameterType="INTEGER">
+        delete from deptInfo
+        where dept_no = #{deptNo}
+    </delete>
+
+    <insert id="insert" parameterType="com.wochanye.demo.model.DeptPO">
+        insert into deptInfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deptName != null">
+                dept_name,
+            </if>
+            <if test="deptLevel != null">
+                dept_level,
+            </if>
+            <if test="deptLoc != null">
+                dept_loc,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deptName != null">
+                #{deptName},
+            </if>
+            <if test="deptLevel != null">
+                #{deptLevel},
+            </if>
+            <if test="deptLoc != null">
+                #{deptLoc},
+            </if>
+            <if test="operator != null">
+                #{operator},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>
