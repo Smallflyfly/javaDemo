@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  */
 public class ResponseUtil {
 
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(ResponseUtil.class);
+//    private static final Logger logger = (Logger) LoggerFactory.getLogger(ResponseUtil.class);
 
     private static final String LIST_KEY = "list";
 

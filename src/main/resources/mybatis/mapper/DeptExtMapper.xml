@@ -10,20 +10,4 @@
             </if>
         </where>
     </select>
-
-    <select id="selectDeptList" resultMap="com.wochanye.demo.mapper.DeptMapper.BaseResultMap">
-        select *
-        from wocy_dept
-        <where>
-            <if test="deptName != null">
-                dept_name like #{deptName}"%"
-            </if>
-        </where>
-        <if test="limit != null">
-            limit ${limit}
-        </if>
-        <if test="offset != null">
-            offset ${offset}
-        </if>
-    </select>
 </mapper>

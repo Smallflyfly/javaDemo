@@ -13,30 +13,30 @@ public interface EmpMapper {
      * @param empNo
      * @return
      */
-    int deleteByPrimaryKey(Integer empNo);
+//    int deleteByPrimaryKey(Integer empNo);
 
     /**
      * 插入新员工
      */
-    int insert(EmpPO record);
+//    int insert(EmpPO record);
 
     /**
      * 选择性插入
      */
-    int insertSelective(EmpPO record);
+//    int insertSelective(EmpPO record);
 
     /**
      * 根据员工编号
      */
-    EmpPO selectByPrimaryKey(Integer empNo);
+//    EmpPO selectByPrimaryKey(Integer empNo);
 
     /**
      * 选择性更新员工信息
      */
-    int updateByPrimaryKeySelective(EmpPO record);
+//    int updateByPrimaryKeySelective(EmpPO record);
 
     /**
      * 根据编号更新员工信息
      */
-    int updateByPrimaryKey(EmpPO record);
+//    int updateByPrimaryKey(EmpPO record);
 }

@@ -16,13 +16,13 @@ public interface EmpExtMapper extends EmpMapper {
      * @param param 参数
      * @return int
      */
-    int selectCount(Map<String, Object> param);
+//    int selectCount(Map<String, Object> param);
 
     /**
      *  根据条件获取员工列表
      * @param param 参数
      * @return List
      */
-    List<EmpPO> selectEmpList(Map<String, Object> param);
+//    List<EmpPO> selectEmpList(Map<String, Object> param);
 
 }

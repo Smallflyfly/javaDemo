@@ -10,5 +10,17 @@ import java.util.List;
  * @data 2020/1/10 16:13
  */
 public interface BaseInfoService {
+    /**
+     * 获取部门列表
+     * @param
+     * @return Result<List<DeptPO>>
+     */
     Result<List<DeptPO>> getDeptList();
+
+    /**
+     * 新增部门
+     * @param deptPo
+     * @return Result
+     */
+    Result insetDept(DeptPO deptPo);
 }
