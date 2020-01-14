@@ -4,8 +4,7 @@ import com.wochanye.demo.config.ResponseUtil;
 import com.wochanye.demo.config.Result;
 import com.wochanye.demo.mapper.DeptMapper;
 import com.wochanye.demo.model.DeptPO;
-import com.wochanye.demo.service.BaseInfoService;
-import lombok.extern.log4j.Log4j;
+import com.wochanye.demo.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class BaseInfoServiceImpl implements BaseInfoService {
+public class DeptServiceImpl implements DeptService {
 
     @Resource
     private DeptMapper deptMapper;

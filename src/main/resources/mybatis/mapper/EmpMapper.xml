@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wochanye.demo.mapper.DeptMapper">
+<mapper namespace="com.wochanye.demo.mapper.EmpMapper">
     <resultMap id="BaseDeptResultMapper" type="com.wochanye.demo.model.EmpPO">
         <id column="emp_no" property="empNo" jdbcType="INTEGER"/>
         <result column="emp_name" property="empName" jdbcType="VARCHAR"/>
@@ -12,108 +12,4 @@
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <sql id="Base_common_list">
-        dept_no, dept_name, dept_level, dept_loc, operator, create_time, update_time
-    </sql>
-
-    <select id="selectByPrimaryKey" parameterType="INTEGER" resultMap="BaseDeptResultMapper">
-        select
-        <include refid="Base_common_list" />
-        from deptInfo
-        where dept_no = #{deptNo}
-    </select>
-
-    <delete id="deleteByPrimaryKey" parameterType="INTEGER">
-        delete from deptInfo
-        where dept_no = #{deptNo}
-    </delete>
-
-    <insert id="insert" parameterType="com.wochanye.demo.model.DeptPO">
-        insert into deptInfo
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="deptName != null">
-                dept_name,
-            </if>
-            <if test="deptLevel != null">
-                dept_level,
-            </if>
-            <if test="deptLoc != null">
-                dept_loc,
-            </if>
-            <if test="operator != null">
-                operator,
-            </if>
-            <if test="createTime != null">
-                create_time,
-            </if>
-            <if test="updateTime != null">
-                update_time,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="deptName != null">
-                #{deptName},
-            </if>
-            <if test="deptLevel != null">
-                #{deptLevel},
-            </if>
-            <if test="deptLoc != null">
-                #{deptLoc},
-            </if>
-            <if test="operator != null">
-                #{operator},
-            </if>
-            <if test="createTime != null">
-                #{createTime},
-            </if>
-            <if test="updateTime != null">
-                #{updateTime},
-            </if>
-        </trim>
-    </insert>
-
-    <update id="updateByPrimaryKey" parameterType="com.wochanye.demo.model.DeptPO">
-        update deptInfo
-        <set>
-            <if test="deptName != null">
-                dept_name = #{deptName},
-            </if>
-            <if test="deptLevel != null">
-                dept_level = #{deptLevel},
-            </if>
-            <if test="deptLoc != null">
-                dept_loc = #{deptLoc},
-            </if>
-            <if test="operator != null">
-                operator = #{operator},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="updateTime != null">
-                update_time = #{updateTime},
-            </if>
-        </set>
-    </update>
-
-    <select id="getDeptList" parameterType="com.wochanye.demo.model.DeptPO" resultMap="BaseDeptResultMapper">
-        select
-        <include refid="Base_common_list"/>
-        from deptInfo
-        <where>
-            <if test="deptName != null">
-                dept_name = #{deptName}
-            </if>
-            <if test="deptLevel != null">
-                dept_level = #{deptLevel}
-            </if>
-            <if test="deptLoc != null">
-                dept_loc = #{deptLoc}
-            </if>
-            <if test="operator != null">
-                operator = #{operator}
-            </if>
-        </where>
-    </select>
-
 </mapper>

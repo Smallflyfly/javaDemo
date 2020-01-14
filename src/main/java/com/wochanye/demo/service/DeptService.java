@@ -9,7 +9,7 @@ import java.util.List;
  * @author fangpf
  * @data 2020/1/10 16:13
  */
-public interface BaseInfoService {
+public interface DeptService {
     /**
      * 获取部门列表
      * @param

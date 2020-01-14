@@ -29,16 +29,6 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void testDemo(){
-        Integer a = 30;
-        Integer b = 40;
-        Integer c = 50;
-        Integer d = 60;
-        Integer e = (a < b && c < d) ? 150:250;
-        System.out.println(e);
-    }
-
-    @Test
     public void testZK(){
         String url = configGroup.get("alibaba");
 //        Boolean flag = configGroup.containsKey("baidu");

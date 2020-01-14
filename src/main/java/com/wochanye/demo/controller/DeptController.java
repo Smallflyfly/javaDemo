@@ -2,7 +2,7 @@ package com.wochanye.demo.controller;
 
 import com.wochanye.demo.config.Result;
 import com.wochanye.demo.model.DeptPO;
-import com.wochanye.demo.service.BaseInfoService;
+import com.wochanye.demo.service.DeptService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
@@ -23,17 +23,17 @@ import java.util.List;
 public class DeptController {
 
     @Resource
-    private BaseInfoService baseInfoService;
+    private DeptService deptService;
 
     @GetMapping("/deptList")
     @ApiOperation(value = "Dept测试", notes = "Dept测试")
     Result<List<DeptPO>> getDeptLit(){
-        return baseInfoService.getDeptList();
+        return deptService.getDeptList();
     }
 
     @PostMapping("/insertDept")
     @ApiOperation(value = "部门插入", notes = "部门插入")
     Result insertDept(@Validated DeptPO deptPo){
-        return baseInfoService.insetDept(deptPo);
+        return deptService.insetDept(deptPo);
     }
 }
