@@ -19,7 +19,7 @@ public interface DeptExtMapper extends DeptMapper {
      * @param param
      * @return
      */
-    int selectCount(Map<String, Object> param);
+//    int selectCount(Map<String, Object> param);
 
     /**
      * 根据条件筛选获取部门列表
