@@ -28,12 +28,14 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public Result<Map<String, List<DeptPO>>> getDeptList(PageQuery pageQuery) {
         List<DeptPO> deptPoList = new ArrayList<>();
+        int total = 0;
         try {
             deptPoList = deptMapper.getDeptList(pageQuery);
+            total = deptPoList.size();
         } catch (Exception e){
             log.info(e.getMessage());
         }
-        return ResponseUtil.getInfoPageListSuccess(10, deptPoList);
+        return ResponseUtil.getInfoPageListSuccess(total, deptPoList);
     }
 
     @Override
