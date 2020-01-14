@@ -27,6 +27,6 @@ public interface DeptExtMapper extends DeptMapper {
      * @param param
      * @return
      */
-    List<DeptPO> selectDeptList(Map<String, Object> param);
+//    List<DeptPO> selectDeptList(Map<String, Object> param);
 
 }
