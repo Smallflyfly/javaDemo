@@ -2,6 +2,7 @@ package com.wochanye.demo.controller;
 
 import com.wochanye.demo.config.Result;
 import com.wochanye.demo.model.DeptPO;
+import com.wochanye.demo.page.PageQuery;
 import com.wochanye.demo.service.DeptService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author fangpf
@@ -26,9 +28,9 @@ public class DeptController {
     private DeptService deptService;
 
     @GetMapping("/deptList")
-    @ApiOperation(value = "Dept测试", notes = "Dept测试")
-    Result<List<DeptPO>> getDeptLit(){
-        return deptService.getDeptList();
+    @ApiOperation(value = "获取部门列表", notes = "获取部门列表")
+    Result<Map<String, List<DeptPO>>> getDeptLit(@Validated PageQuery pageQuery){
+        return deptService.getDeptList(pageQuery);
     }
 
     @PostMapping("/insertDept")

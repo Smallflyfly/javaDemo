@@ -2,8 +2,10 @@ package com.wochanye.demo.service;
 
 import com.wochanye.demo.config.Result;
 import com.wochanye.demo.model.DeptPO;
+import com.wochanye.demo.page.PageQuery;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author fangpf
@@ -15,7 +17,7 @@ public interface DeptService {
      * @param
      * @return Result<List<DeptPO>>
      */
-    Result<List<DeptPO>> getDeptList();
+    Result<Map<String, List<DeptPO>>> getDeptList(PageQuery pageQuery);
 
     /**
      * 新增部门

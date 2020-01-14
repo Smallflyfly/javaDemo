@@ -34,6 +34,9 @@ public class EmpPO implements Serializable {
     @ApiModelProperty(value = "部门编号",example = "1")
     private Integer deptNo;
 
+    @ApiModelProperty(value = "职务", example = "Java开发工程师")
+    private String job;
+
     @ApiModelProperty(value = "操作员")
     private String operator;
 

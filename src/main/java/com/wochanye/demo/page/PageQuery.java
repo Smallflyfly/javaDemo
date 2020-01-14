@@ -30,5 +30,5 @@ public class PageQuery implements Serializable {
     private Integer pageSize = 10;
 
     @ApiModelProperty(hidden = true, value = "偏移量", example = "1")
-    private Integer offset;
+    private Integer offset = 0;
 }

@@ -16,7 +16,7 @@ import java.util.Date;
 @Setter
 public class DeptPO implements Serializable {
 
-    @ApiModelProperty(value = "部门编号", example = "1")
+    @ApiModelProperty(value = "部门编号")
     private Integer deptNo;
 
     @ApiModelProperty(value = "部门名称", example = "应用研发部")

@@ -4,12 +4,15 @@ import com.wochanye.demo.config.ResponseUtil;
 import com.wochanye.demo.config.Result;
 import com.wochanye.demo.mapper.DeptMapper;
 import com.wochanye.demo.model.DeptPO;
+import com.wochanye.demo.page.PageQuery;
 import com.wochanye.demo.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author fangpf
@@ -23,8 +26,14 @@ public class DeptServiceImpl implements DeptService {
     private DeptMapper deptMapper;
 
     @Override
-    public Result<List<DeptPO>> getDeptList() {
-        return null;
+    public Result<Map<String, List<DeptPO>>> getDeptList(PageQuery pageQuery) {
+        List<DeptPO> deptPoList = new ArrayList<>();
+        try {
+            deptPoList = deptMapper.getDeptList(pageQuery);
+        } catch (Exception e){
+            log.info(e.getMessage());
+        }
+        return ResponseUtil.getInfoPageListSuccess(10, deptPoList);
     }
 
     @Override

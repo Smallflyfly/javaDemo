@@ -1,6 +1,7 @@
 package com.wochanye.demo.mapper;
 
 import com.wochanye.demo.model.DeptPO;
+import com.wochanye.demo.page.PageQuery;
 
 import java.util.List;
 
@@ -40,8 +41,8 @@ public interface DeptMapper {
 
     /**
      * 获取部门列表
-     * @param
+     * @param pageQuery
      * @return List
      */
-    List<DeptPO> getDeptList();
+    List<DeptPO> getDeptList(PageQuery pageQuery);
 }

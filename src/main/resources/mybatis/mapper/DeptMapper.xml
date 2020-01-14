@@ -95,24 +95,27 @@
         </set>
     </update>
 
-    <select id="getDeptList" parameterType="com.wochanye.demo.model.DeptPO" resultMap="BaseDeptResultMapper">
+    <select id="getDeptList" parameterType="com.wochanye.demo.page.PageQuery" resultMap="BaseDeptResultMapper">
         select
         <include refid="Base_common_list"/>
         from deptInfo
-        <where>
-            <if test="deptName != null">
-                dept_name = #{deptName}
-            </if>
-            <if test="deptLevel != null">
-                dept_level = #{deptLevel}
-            </if>
-            <if test="deptLoc != null">
-                dept_loc = #{deptLoc}
-            </if>
-            <if test="operator != null">
-                operator = #{operator}
-            </if>
-        </where>
+<!--        <where>-->
+<!--            <if test="deptName != null">-->
+<!--                dept_name = #{deptName}-->
+<!--            </if>-->
+<!--            <if test="deptLevel != null">-->
+<!--                dept_level = #{deptLevel}-->
+<!--            </if>-->
+<!--            <if test="deptLoc != null">-->
+<!--                dept_loc = #{deptLoc}-->
+<!--            </if>-->
+<!--            <if test="operator != null">-->
+<!--                operator = #{operator}-->
+<!--            </if>-->
+<!--        </where>-->
+        <if test="pageQuery != null">
+            limit #{pageQuery.offset}, #{pageQuery.pageSize}
+        </if>
     </select>
 
 </mapper>
