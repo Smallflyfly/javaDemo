@@ -15,6 +15,7 @@ import javax.annotation.Resource;
  * @author cuijie
  * @since 2018-07-24
  */
+/**
 @Controller
 public class RestTemplateController {
 
@@ -44,3 +45,4 @@ public class RestTemplateController {
     }
 
 }
+**/

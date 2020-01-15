@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
 @Controller
 public class WebSocketController {
 
@@ -15,7 +16,7 @@ public class WebSocketController {
      * 展示输出，但因为没有配置视图输出，会报500
      *
      * @return
-     */
+
     @RequestMapping(value = "webSocket", method = RequestMethod.GET)
     public String webSocketPage() {
         return "webSocket";
@@ -32,3 +33,4 @@ public class WebSocketController {
         return response;
     }
 }
+**/

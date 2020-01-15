@@ -2,6 +2,7 @@ package com.wochanye.demo.page;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.models.auth.In;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -29,6 +30,6 @@ public class PageQuery implements Serializable {
     @Min(value = 1, message = "展示数量不合法")
     private Integer pageSize = 10;
 
-    @ApiModelProperty(hidden = true, value = "偏移量", example = "1")
-    private Integer offset = 0;
+    @ApiModelProperty(hidden = true, value = "偏移量")
+    private Integer offset;
 }

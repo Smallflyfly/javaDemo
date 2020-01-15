@@ -4,7 +4,7 @@
     <resultMap id="BaseDeptResultMapper" type="com.wochanye.demo.model.DeptPO">
         <id column="dept_no" property="deptNo" jdbcType="INTEGER"/>
         <result column="dept_name" property="deptName" jdbcType="VARCHAR"/>
-        <result column="dept_level" property="deptLevel" jdbcType="TINYINT"/>
+        <result column="dept_level" property="deptLevel" jdbcType="INTEGER"/>
         <result column="dept_loc" property="deptLoc" jdbcType="VARCHAR"/>
         <result column="operator" property="operator" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
@@ -93,29 +93,21 @@
                 update_time = #{updateTime},
             </if>
         </set>
+        <where>
+            dept_no = #{deptNo}
+        </where>
     </update>
 
     <select id="getDeptList" parameterType="com.wochanye.demo.page.PageQuery" resultMap="BaseDeptResultMapper">
         select
         <include refid="Base_common_list"/>
         from deptInfo
-<!--        <where>-->
-<!--            <if test="deptName != null">-->
-<!--                dept_name = #{deptName}-->
-<!--            </if>-->
-<!--            <if test="deptLevel != null">-->
-<!--                dept_level = #{deptLevel}-->
-<!--            </if>-->
-<!--            <if test="deptLoc != null">-->
-<!--                dept_loc = #{deptLoc}-->
-<!--            </if>-->
-<!--            <if test="operator != null">-->
-<!--                operator = #{operator}-->
-<!--            </if>-->
-<!--        </where>-->
-        <if test="pageQuery != null">
-            limit #{pageQuery.offset}, #{pageQuery.pageSize}
-        </if>
+        limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="selectCount" resultType="INTEGER">
+        select count(0)
+        from deptInfo
     </select>
 
 </mapper>

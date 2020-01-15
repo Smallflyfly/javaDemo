@@ -45,4 +45,11 @@ public interface DeptMapper {
      * @return List
      */
     List<DeptPO> getDeptList(PageQuery pageQuery);
+
+    /**
+     * 统计数量
+     * @param
+     * @return Integer
+     */
+    Integer selectCount();
 }

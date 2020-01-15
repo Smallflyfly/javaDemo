@@ -16,10 +16,10 @@ import java.util.Date;
 @Setter
 public class EmpPO implements Serializable {
 
-    @ApiModelProperty(value = "部门编号", example = "1")
+    @ApiModelProperty(value = "员工编号", hidden = true)
     private Integer empNo;
 
-    @ApiModelProperty(value = "部门名称", example = "应用研发部")
+    @ApiModelProperty(value = "员工姓名", example = "周杰伦")
     private String empName;
 
     @ApiModelProperty(value = "性别", example = "男")
@@ -37,7 +37,7 @@ public class EmpPO implements Serializable {
     @ApiModelProperty(value = "职务", example = "Java开发工程师")
     private String job;
 
-    @ApiModelProperty(value = "操作员")
+    @ApiModelProperty(value = "操作员", example = "admin")
     private String operator;
 
     @ApiModelProperty(hidden = true, value = "创建时间")

@@ -1,22 +1,23 @@
-package com.wochanye.demo.model;
+package com.wochanye.demo.model.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author fangpf
- * @data 2020/1/10 11:03
+ * @data 2020/1/15 10:50
  */
-
 @Getter
 @Setter
-public class DeptPO implements Serializable {
+@ToString
+public class DeptVO implements Serializable {
 
-    @ApiModelProperty(value = "部门编号", example = "1")
+    @ApiModelProperty(value = "部门编号")
     private Integer deptNo;
 
     @ApiModelProperty(value = "部门名称", example = "应用研发部")
@@ -39,4 +40,3 @@ public class DeptPO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 }
-

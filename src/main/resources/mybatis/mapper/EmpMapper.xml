@@ -1,15 +1,133 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wochanye.demo.mapper.EmpMapper">
-    <resultMap id="BaseDeptResultMapper" type="com.wochanye.demo.model.EmpPO">
+    <resultMap id="BaseEmpResultMapper" type="com.wochanye.demo.model.EmpPO">
         <id column="emp_no" property="empNo" jdbcType="INTEGER"/>
         <result column="emp_name" property="empName" jdbcType="VARCHAR"/>
         <result column="gender" property="gender" jdbcType="TINYINT"/>
         <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
-        <result column="employ_data" property="employDate" jdbcType="TIMESTAMP"/>
+        <result column="employ_date" property="employDate" jdbcType="TIMESTAMP"/>
         <result column="dept_no" property="deptNo" jdbcType="INTEGER"/>
+        <result column="job" property="job" jdbcType="VARCHAR"/>
         <result column="operator" property="operator" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
+
+    <sql id="Base_column">
+        emp_name, gender, birthday, employ_data, dept_no, job, operator, create_time, update_time
+    </sql>
+
+    <insert id="insert" parameterType="com.wochanye.demo.model.EmpPO">
+        insert into empInfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="empName != null">
+                emp_name,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="employDate">
+                employ_date,
+            </if>
+            <if test="deptNo != null">
+                dept_no,
+            </if>
+            <if test="job != null">
+                job,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="empName != null">
+                #{empName},
+            </if>
+            <if test="gender != null">
+                #{gender},
+            </if>
+            <if test="birthday != null">
+                #{birthday},
+            </if>
+            <if test="employDate">
+                #{employDate},
+            </if>
+            <if test="deptNo != null">
+                #{deptNo},
+            </if>
+            <if test="job != null">
+                #{job},
+            </if>
+            <if test="operator != null">
+                #{operator},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="INTEGER">
+        delete from empInfo
+        where emp_no = #{empNo}
+    </delete>
+
+    <update id="update" parameterType="com.wochanye.demo.model.EmpPO">
+        update empInfo
+        <set>
+            <if test="empName != null">
+                emp_name = #{empName},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="employDate">
+                employ_date = #{employ_date},
+            </if>
+            <if test="deptNo != null">
+                dept_no = #{dept_no},
+            </if>
+            <if test="job != null">
+                job = #{job},
+            </if>
+            <if test="operator != null">
+                operator = #{operator},
+            </if>
+            <if test="createTime != null">
+                create_time = #{create_time},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{update_time},
+            </if>
+        </set>
+        <where>
+            emp_no = #{empNo}
+        </where>
+    </update>
+
+    <select id="select" parameterType="INTEGER" resultMap="BaseEmpResultMapper">
+        select
+        <include refid="Base_column"/>
+        from empInfo
+        <where>
+            emp_no = #{empNo}
+        </where>
+    </select>
+
 </mapper>
