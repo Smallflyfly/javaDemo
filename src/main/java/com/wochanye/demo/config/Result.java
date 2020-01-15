@@ -1,11 +1,14 @@
 package com.wochanye.demo.config;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 
 /**
  * @author fangpf
  * @data 2019/12/27 15:06
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result<T>  implements Serializable {
 
     private boolean success;
