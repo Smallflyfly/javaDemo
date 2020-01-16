@@ -2,6 +2,11 @@ package com.wochanye.demo.service;
 
 import com.wochanye.demo.config.Result;
 import com.wochanye.demo.model.EmpPO;
+import com.wochanye.demo.model.vo.EmpVO;
+import com.wochanye.demo.page.PageQuery;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author fangpf
@@ -14,4 +19,11 @@ public interface EmpService {
      * @return void
      */
     Result insertEmp(EmpPO empPo);
+
+    /**
+     * 分页查询所有员工信息
+     * @param pageQuery 分页信息
+     * @return Result<Map<String, List<EmpVO>>>
+     */
+    Result<Map<String, List<EmpVO>>> getEmpPageList(PageQuery pageQuery);
 }

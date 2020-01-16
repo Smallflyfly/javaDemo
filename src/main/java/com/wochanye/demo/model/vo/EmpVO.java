@@ -1,20 +1,21 @@
-package com.wochanye.demo.model;
+package com.wochanye.demo.model.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author fangpf
- * @data 2020/1/10 11:03
+ * @date 2020/1/16 10:39
  */
-
 @Getter
 @Setter
-public class EmpPO implements Serializable {
+@ToString
+public class EmpVO implements Serializable {
 
     @ApiModelProperty(value = "员工编号", hidden = true)
     private Integer empNo;
