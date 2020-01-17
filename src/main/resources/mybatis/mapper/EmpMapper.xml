@@ -4,7 +4,7 @@
     <resultMap id="BaseEmpResultMapper" type="com.wochanye.demo.model.EmpPO">
         <id column="emp_no" property="empNo" jdbcType="INTEGER"/>
         <result column="emp_name" property="empName" jdbcType="VARCHAR"/>
-        <result column="gender" property="gender" jdbcType="TINYINT"/>
+        <result column="gender" property="gender" jdbcType="VARCHAR"/>
         <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
         <result column="id_card" property="idCard" jdbcType="VARCHAR"/>
         <result column="employ_date" property="employDate" jdbcType="TIMESTAMP"/>
@@ -16,7 +16,7 @@
     </resultMap>
 
     <sql id="Base_column">
-        emp_name, gender, birthday, employ_date, dept_no, job, operator, create_time, update_time
+        emp_no, emp_name, gender, birthday, id_card, employ_date, dept_no, job, operator, create_time, update_time
     </sql>
 
     <insert id="insert" parameterType="com.wochanye.demo.model.EmpPO">
@@ -147,15 +147,6 @@
         <where>
             id_card = #{idCard}
         </where>
-    </select>
-
-    <select id="selectEmpPageList" parameterType="com.wochanye.demo.page.PageQuery" resultMap="BaseEmpResultMapper">
-        select
-        <include refid="Base_column"/>
-        from empInfo
-        <if test="pageQuery != null">
-            limit #{offset}, #{pageSize}
-        </if>
     </select>
 
     <select id="selectCount" resultType="INTEGER">

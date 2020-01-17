@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wochanye.demo.mapper.DeptExtMapper">
+    <resultMap id="BaseDeptExtResultMapper" type="com.wochanye.demo.model.DeptPO">
+        <id column="dept_no" property="deptNo" jdbcType="INTEGER"/>
+        <result column="dept_name" property="deptName" jdbcType="VARCHAR"/>
+        <result column="dept_level" property="deptLevel" jdbcType="INTEGER"/>
+        <result column="dept_loc" property="deptLoc" jdbcType="VARCHAR"/>
+        <result column="operator" property="operator" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_common_list">
+        dept_no, dept_name, dept_level, dept_loc, operator, create_time, update_time
+    </sql>
+
+    <select id="selectCountExt" parameterType="map" resultType="INTEGER">
+        select count(0)
+        from deptInfo
+        <where>
+            <if test="deptNo != null">
+                dept_no = #{deptNo, jdbcType=INTEGER}
+            </if>
+            <if test="deptName != null">
+                and dept_name like CONCAT('%',#{deptName, jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="deptLevel != null">
+                and dept_level = #{deptLevel, jdbcType=INTEGER}
+            </if>
+            <if test="deptLoc != null">
+                and dept_loc = #{deptLoc, jdbcType=VARCHAR}
+            </if>
+            <if test="operator != null">
+                and operator = #{operator, jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    
+    <select id="selectiveDeptPageList" parameterType="map" resultMap="BaseDeptExtResultMapper">
+        select
+        <include refid="Base_common_list"/>
+        from deptInfo
+        <where>
+            <if test="deptNo != null">
+                dept_no = #{deptNo, jdbcType=INTEGER}
+            </if>
+            <if test="deptName != null">
+                and dept_name like CONCAT('%', #{deptName, jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="deptLevel != null">
+                and dept_level = #{deptLevel, jdbcType=INTEGER}
+            </if>
+            <if test="deptLoc != null">
+                and dept_loc = #{deptLoc, jdbcType=VARCHAR}
+            </if>
+            <if test="operator != null">
+                and operator = #{operator, jdbcType=VARCHAR}
+            </if>
+        </where>
+        <if test="pageQuery != null">
+            limit #{pageQuery.offset}, #{pageQuery.pageSize}
+        </if>
+    </select>
+
+</mapper>

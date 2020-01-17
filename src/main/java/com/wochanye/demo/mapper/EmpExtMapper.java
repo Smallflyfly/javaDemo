@@ -1,6 +1,7 @@
 package com.wochanye.demo.mapper;
 
 import com.wochanye.demo.model.EmpPO;
+import com.wochanye.demo.page.PageQuery;
 
 import java.util.List;
 import java.util.Map;
@@ -16,13 +17,13 @@ public interface EmpExtMapper extends EmpMapper {
      * @param param 参数
      * @return int
      */
-//    int selectCount(Map<String, Object> param);
+    int selectCountExt(Map<String, Object> param);
 
     /**
-     *  根据条件获取员工列表
-     * @param param 参数
-     * @return List
+     * 有条件分页查询所有员工信息
+     * @param param 查询参数
+     * @return List<EmpPO>
      */
-//    List<EmpPO> selectEmpList(Map<String, Object> param);
+    List<EmpPO> selectEmpPageList(Map<String, Object> param);
 
 }

@@ -46,13 +46,6 @@ public interface EmpMapper {
     EmpPO selectByIdCard(String idCard);
 
     /**
-     * 分页查询所有员工信息
-     * @param pageQuery 分页信息
-     * @return List<EmpPO>
-     */
-    List<EmpPO> selectEmpPageList(PageQuery pageQuery);
-
-    /**
      * 统计总共有多少员工
      * @param
      * @return Integer

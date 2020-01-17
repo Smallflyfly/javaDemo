@@ -2,6 +2,7 @@ package com.wochanye.demo.controller;
 
 import com.wochanye.demo.config.Result;
 import com.wochanye.demo.model.DeptPO;
+import com.wochanye.demo.model.dto.DeptDTO;
 import com.wochanye.demo.model.vo.DeptVO;
 import com.wochanye.demo.page.PageQuery;
 import com.wochanye.demo.service.DeptService;
@@ -29,23 +30,29 @@ public class DeptController {
     @Resource
     private DeptService deptService;
 
-    @PostMapping("/insertDept")
+    @PostMapping("/insert")
     @ApiOperation(value = "新部门插入", notes = "新部门插入")
-    Result insertDept(@Validated DeptPO deptPo){
+    Result insert(@Validated DeptPO deptPo){
         return deptService.insetDept(deptPo);
     }
 
-    @GetMapping("/deptList")
+    @GetMapping("/list")
     @ApiOperation(value = "获取部门列表", notes = "获取部门列表")
-    Result<Map<String, List<DeptVO>>> deptLit(@Validated PageQuery pageQuery){
+    Result<Map<String, List<DeptVO>>> list(@Validated PageQuery pageQuery){
         return deptService.getDeptList(pageQuery);
     }
-    @GetMapping("/dept")
+    @GetMapping("/deptInfo")
     @ApiOperation(value = "根据部门编号获取部门信息", notes = "根据部门编号获取部门信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "deptNo", value = "部门编号", required = true, example = "1"),
     })
     Result<DeptVO> deptInfo(@RequestParam("deptNo") Integer deptNo){
         return deptService.getDeptInfo(deptNo);
+    }
+
+    @GetMapping("/selectiveDeptPageList")
+    @ApiOperation(value = "根据条件获取部门列表", notes = "根据条件获取部门列表")
+    Result<Map<String, List<DeptVO>>> selectiveDeptPageList(@Validated DeptDTO deptDto, @Validated PageQuery pageQuery){
+        return deptService.getSelectivePageList(deptDto, pageQuery);
     }
 }

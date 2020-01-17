@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wochanye.demo.mapper.EmpExtMapper">
+    <resultMap id="BaseEmpResultMapper" type="com.wochanye.demo.model.EmpPO">
+        <id column="emp_no" property="empNo" jdbcType="INTEGER"/>
+        <result column="emp_name" property="empName" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="id_card" property="idCard" jdbcType="VARCHAR"/>
+        <result column="employ_date" property="employDate" jdbcType="TIMESTAMP"/>
+        <result column="dept_no" property="deptNo" jdbcType="INTEGER"/>
+        <result column="job" property="job" jdbcType="VARCHAR"/>
+        <result column="operator" property="operator" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_column">
+        emp_no, emp_name, gender, birthday, id_card, employ_date, dept_no, job, operator, create_time, update_time
+    </sql>
+
+    <select id="selectCountExt" parameterType="map" resultType="INTEGER">
+        select count(0)
+        from empInfo
+        <where>
+            <if test="empNo != null">
+                emp_no = #{empNo, jdbcType=INTEGER}
+            </if>
+            <if test="empName != null">
+                and emp_name = #{empName, jdbcType=VARCHAR}
+            </if>
+            <if test="gender != null">
+                and gender = #{gedner, jdbcType=VARCHAR}
+            </if>
+            <if test="idCard != null">
+                and id_card like CONCAT('%', #{idCard, jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="deptNo != null">
+                and dept_no = #{deptNo, jdbcType=INTEGER}
+            </if>
+            <if test="job != null">
+                and job like CONCAT('%', #{job, jdbcType=VARCHAR}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectEmpPageList" parameterType="map" resultMap="BaseEmpResultMapper">
+        select
+        <include refid="Base_column"/>
+        from empInfo
+        <where>
+            <if test="empNo != null">
+                emp_no = #{empNo, jdbcType=INTEGER}
+            </if>
+            <if test="empName != null">
+                and emp_name = #{empName, jdbcType=VARCHAR}
+            </if>
+            <if test="gender != null">
+                and gender = #{gedner, jdbcType=VARCHAR}
+            </if>
+            <if test="idCard != null">
+                and id_card like CONCAT('%', #{idCard, jdbcType=VARCHAR}, '%')
+            </if>
+            <if test="deptNo != null">
+                and deptNo = #{deptNo, jdbcType=INTEGER}
+            </if>
+            <if test="job != null">
+                and job like CONCAT('%', #{job, jdbcType=VARCHAR}, '%')
+            </if>
+        </where>
+        <if test="pageQuery != null">
+        limit #{pageQuery.offset}, #{pageQuery.pageSize}
+        </if>
+    </select>
+
+</mapper>
