@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 public class EmpDTO implements Serializable {
 
-    @ApiModelProperty(value = "员工编号")
+    @ApiModelProperty(value = "员工编号", example = "1")
     private Integer empNo;
 
     @ApiModelProperty(value = "员工姓名", example = "周杰伦")

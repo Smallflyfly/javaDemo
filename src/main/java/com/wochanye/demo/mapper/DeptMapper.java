@@ -1,6 +1,7 @@
 package com.wochanye.demo.mapper;
 
 import com.wochanye.demo.model.DeptPO;
+import com.wochanye.demo.model.dto.DeptDTO;
 import com.wochanye.demo.page.PageQuery;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface DeptMapper {
      * @param record 部门信息
      * @return void
      */
-    void insert(DeptPO record);
+    void insert(DeptDTO record);
 
     /**
      *  根据部门编号获取部门信息

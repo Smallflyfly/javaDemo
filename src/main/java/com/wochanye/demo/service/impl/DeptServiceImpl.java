@@ -55,9 +55,9 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public Result insetDept(DeptPO deptPo) {
+    public Result insetDept(DeptDTO deptDto) {
         try{
-            deptMapper.insert(deptPo);
+            deptMapper.insert(deptDto);
         } catch (Exception e){
             log.info("插入部门出错");
         }

@@ -23,4 +23,23 @@ public class ConfigConsts {
      */
     public static final String SESSION_USER_ID = "userId";
 
+    public interface Auth{
+        String TOKEN_KEY = "token";
+        String TOKEN_EXPIRE_KEY = "tokenExpire";
+        String TOKEN_ID_KEY = "id";
+        String TOKEN_USERNAME_KEY = "username";
+        String TOKEN_EXPIRE_TIME = "time";
+    }
+
+    public interface Session{
+
+    }
+
+    /**
+     * 客户端信息
+     */
+    public interface Client{
+        String USER_AGENT = "User-Agent";
+    }
+
 }

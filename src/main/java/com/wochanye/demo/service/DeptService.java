@@ -23,10 +23,10 @@ public interface DeptService {
 
     /**
      * 新增部门
-     * @param deptPo 部门信息
+     * @param deptDto 部门信息
      * @return Result
      */
-    Result insetDept(DeptPO deptPo);
+    Result insetDept(DeptDTO deptDto);
 
     /**
      * 根据部门编号获取部门信息

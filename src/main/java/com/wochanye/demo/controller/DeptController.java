@@ -32,8 +32,8 @@ public class DeptController {
 
     @PostMapping("/insert")
     @ApiOperation(value = "新部门插入", notes = "新部门插入")
-    Result insert(@Validated DeptPO deptPo){
-        return deptService.insetDept(deptPo);
+    Result insert(@Validated DeptDTO deptDto){
+        return deptService.insetDept(deptDto);
     }
 
     @GetMapping("/list")
