@@ -1,0 +1,52 @@
+#端口
+server:
+  port: 8085
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_DB_URL}:${MYSQL_DB_PORT}/${MYSQL_DB_NAME}?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&verifyServerCertificate=false&serverTimezone=GMT%2b8
+    username: ${MYSQL_DB_USERNAME}
+    password: ${MYSQL_DB_PASSWORD}
+    hikari:
+      pool-name: demo-hikari-pool
+      minimum-idle: 5
+      maximum-pool-size: 10
+      connection-test-query: select 1
+      max-lifetime: 40000
+      idle-timeout: 30000
+
+  redis:
+    host: ${REDIS_CLUSTER}
+    port: 6379
+    timeout: 10000ms
+    # Redis默认情况下有16个分片，这里配置具体使用的分片，默认是0
+    database: 0
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  http:
+    encoding:
+      charset: UTF-8
+
+mybatis-plus:
+  type-aliases-package: com.wochanye.demo.model
+  mapper-locations:
+    - classpath*:com/wochanye/demo/mapping/*.xml
+    - classpath*:com/wochanye/demo/mapping/ext/*.xml
+    - classpath*:mapper/*.xml
+
+config-toolkit:
+  connect-str: ${ZK_CLUSTER}
+  root-node: /wocy
+  version: 1.0.0
+
+client:
+  access:
+    need: true
+  access-secret: ${ACCESS_SECRET}
+  backend:
+    access-expire-time: 30000

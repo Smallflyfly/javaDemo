@@ -61,6 +61,7 @@ public class JwtFilter extends DefaultFilter {
             if (StringUtils.isBlank(token)){
                 log.error("token不能为空");
                 responseUnauthorized(response);
+                return;
             }
         }
         try {
@@ -68,12 +69,15 @@ public class JwtFilter extends DefaultFilter {
             Map<String, Claim> claims = jwtUtil.verifyToken(token);
             if (System.currentTimeMillis() > claims.get(ConfigConsts.Auth.TOKEN_EXPIRE_TIME).asLong()){
                 responseAccessTimeout(response);
+                return;
             }
             //验证 url 权限
             String userId = claims.get(ConfigConsts.Auth.TOKEN_ID_KEY).asString();
             if (!isDefaultInclude(url) && !canAccess(url, userId)){
                 responseUnauthorized(response);
             }
+        }catch (Exception e){
+            log.error("unauthoried");
         }
     }
 

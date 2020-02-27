@@ -20,19 +20,19 @@
         from deptInfo
         <where>
             <if test="deptNo != null">
-                dept_no = #{deptNo, jdbcType=INTEGER}
+                dept_no = #{deptNo}
             </if>
             <if test="deptName != null">
-                and dept_name like CONCAT('%',#{deptName, jdbcType=VARCHAR}, '%')
+                and dept_name like CONCAT('%',#{deptName}, '%')
             </if>
             <if test="deptLevel != null">
-                and dept_level = #{deptLevel, jdbcType=INTEGER}
+                and dept_level = #{deptLevel}
             </if>
             <if test="deptLoc != null">
-                and dept_loc = #{deptLoc, jdbcType=VARCHAR}
+                and dept_loc = #{deptLoc}
             </if>
             <if test="operator != null">
-                and operator = #{operator, jdbcType=VARCHAR}
+                and operator = #{operator}
             </if>
         </where>
     </select>
@@ -43,19 +43,19 @@
         from deptInfo
         <where>
             <if test="deptNo != null">
-                dept_no = #{deptNo, jdbcType=INTEGER}
+                dept_no = #{deptNo}
             </if>
             <if test="deptName != null">
-                and dept_name like CONCAT('%', #{deptName, jdbcType=VARCHAR}, '%')
+                and dept_name like CONCAT('%', #{deptName}, '%')
             </if>
             <if test="deptLevel != null">
-                and dept_level = #{deptLevel, jdbcType=INTEGER}
+                and dept_level = #{deptLevel}
             </if>
             <if test="deptLoc != null">
-                and dept_loc = #{deptLoc, jdbcType=VARCHAR}
+                and dept_loc = #{deptLoc}
             </if>
             <if test="operator != null">
-                and operator = #{operator, jdbcType=VARCHAR}
+                and operator = #{operator}
             </if>
         </where>
         <if test="pageQuery != null">
